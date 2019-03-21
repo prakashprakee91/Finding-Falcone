@@ -1,0 +1,69 @@
+// @import "src/styles.scss";
+
+
+// .app-ff-rootlayot{
+//     width: 100%;
+//     height: 100%;
+//     display: grid;
+//     grid-template-areas: 
+//     'headerText headerText headerText headerText headerText'
+//     'info info info info info'
+//     'planet planet planet planet time'
+//     '. . Button . .'
+//     'footer footer footer footer footer';
+//     grid-row-gap: $factor*10/16;
+//     text-align: center;
+// }
+
+// .app-ff-header{
+//     grid-area: headerText;
+// }
+
+// .app-ff-planetinfo{
+//     grid-area: info;
+// }
+
+// .app-ff-planetsParent{
+//     height: $factor*250/16;
+// }
+
+// .app-ff-planets{
+//     grid-area: planet;
+// }
+
+// .app-ff-timetaken{
+//     grid-area: time;
+// }
+
+// .app-ff-button{
+//     grid-area: Button;
+//     width: $factor*200/16;
+//     border-radius: $factor*60/16;
+//     height: $factor*60/16;
+//     border: $factor*4/16 solid turquoise;
+//     background: turquoise;
+// }
+
+// .app-ff-footer{
+//     grid-area: footer;
+// }
+@import "src/styles.scss";
+:host{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    text-align: center;
+    grid-template-areas: "headerText"
+    "contentArea"
+    "footer";
+}
+
+.app-ff-header{
+    grid-area: headerText;
+}
+.app-ff-content{
+    grid-area: contentArea;
+}
+.app-ff-footer{
+    grid-area: footer;
+}

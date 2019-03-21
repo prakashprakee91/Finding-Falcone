@@ -1,0 +1,15 @@
+<input class="inputCls" type="text" name="select plenet" placeholder="Select Planet" 
+list="datalist" [(ngModel)]="sPlanet" (ngModelChange)="fnDoSomething()">
+
+<datalist name="" id="datalist">
+  <ng-container *ngFor="let planets of oPlanetList">
+    <option *ngIf="planets.isActive === false" (ngModelChange)="fnDoSomething()">{{planets.name}}</option>
+  </ng-container>
+</datalist>
+
+<div class="vehiclesListCls" *ngIf="sPlanet !== ''">
+  <div *ngFor="let vehicles of oVehicleList; let i = index">
+    <input type="radio" [name]="sDummy" [value]="vehicles.name" [disabled]="fnDisableInput(vehicles)"
+    (click)="fnVehicles(i)">{{vehicles.name}}({{vehicles.total_no}})
+  </div>
+</div>

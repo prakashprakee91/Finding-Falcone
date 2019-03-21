@@ -1,0 +1,48 @@
+@import "src/styles.scss";
+
+
+.app-ff-rootlayot{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+    'info info info info info'
+    'planet planet planet planet time'
+    '. . Button . .';
+    grid-row-gap: $factor*10/16;
+    text-align: center;
+}
+
+// .app-ff-header{
+//     grid-area: headerText;
+// }
+
+.app-ff-planetinfo{
+    grid-area: info;
+}
+
+.app-ff-planetsParent{
+    height: $factor*250/16;
+}
+
+.app-ff-planets{
+    grid-area: planet;
+}
+
+.app-ff-timetaken{
+    grid-area: time;
+    width: $factor*150/16;
+}
+
+.app-ff-button{
+    grid-area: Button;
+    width: $factor*200/16;
+    border-radius: $factor*60/16;
+    height: $factor*60/16;
+    border: $factor*4/16 solid turquoise;
+    background: turquoise;
+}
+
+// .app-ff-footer{
+//     grid-area: footer;
+// }
