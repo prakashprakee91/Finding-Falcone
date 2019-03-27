@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
+
 export class UtilityService {
 
   private oPlanetsData;
@@ -21,7 +22,6 @@ export class UtilityService {
   constructor(private httpClient: HttpClient, private router: Router) { }
 
   public fetchServerData(): void {
-    //this.router.navigate(['./findingFalcone']);
     const planets = this.httpClient.get('https://findfalcone.herokuapp.com/planets').subscribe(
       result => {
         this.oPlanetsData = result;
@@ -66,8 +66,8 @@ export class UtilityService {
     };
     this.httpClient.post('https://findfalcone.herokuapp.com/find',JSON.stringify(obj), headerOptions).subscribe(result=>
   {
-  
-    this.router.navigate(['./success', {status: result.status,planet: result.planet_name, time:this.getTimeTaken()}]);
+    let oResult: any = result;
+    this.router.navigate(['./success', {status: oResult.status,planet: oResult.planet_name, time:this.getTimeTaken()}]);
   });
   }
 
