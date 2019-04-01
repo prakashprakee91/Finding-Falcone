@@ -1,16 +1,14 @@
-  <div class="app-ff-rootlayot">
-          <!-- <h2 class="app-ff-header">Finding Falcone!</h2> -->
-  
-          <div class="app-ff-planetinfo">Select Planet you want to select</div>
-  
-          <div class="app-ff-planetsParent" *ngFor="let i of sDummyArray">
-                  <app-findingfalcone class="app-ff-planets" [oPlanetList]="aPlanets" [oVehicleList]="aVehicles" [sDummy]="sDummyArray[i]"></app-findingfalcone>
-          </div>
-  
-          <div class="app-ff-timetaken">Time : {{fnGetTimeTaken()}}</div>
-  
-          <button class="app-ff-button" (click) = "getPostData()">Find Falcone</button>
-  
-          <!-- <footer class="app-ff-footer">coding problem - www.geektrust.in/finding-falcone</footer> -->
-  </div>
-  
+<!-- HTML for Picking a planet -->
+<div class="app-ff-rootlayot">
+
+        <div class="app-ff-planetinfo">Select Planet you want to select</div>
+
+        <div class="app-ff-planetsParent" *ngFor="let i of sDummyArray">
+                <app-findingfalcone class="app-ff-planets" [oPlanetList]="aPlanets" [oVehicleList]="aVehicles" [sDummy]="sDummyArray[i]"></app-findingfalcone>
+        </div>
+
+        <div class="app-ff-timetaken">Time : {{fnGetTimeTaken()}}</div>
+
+        <button class="app-ff-button" (click)="getPostData()">Find Falcone</button>
+
+</div>

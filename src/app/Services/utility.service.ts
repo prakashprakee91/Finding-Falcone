@@ -2,7 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
-
+/**
+ *This is where the business logic is done
+ *
+ * @export
+ * @class UtilityService
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -20,8 +25,12 @@ export class UtilityService {
   public obsVehicles$ = this.subVehicles.asObservable();
   private token ;
   constructor(private httpClient: HttpClient, private router: Router) { }
-
-  public fetchServerData(): void {
+/**
+ *Data fetching for go on with the app
+ *
+ * @memberof UtilityService
+ */
+public fetchServerData(): void {
     const planets = this.httpClient.get('https://findfalcone.herokuapp.com/planets').subscribe(
       result => {
         this.oPlanetsData = result;
@@ -47,8 +56,12 @@ export class UtilityService {
 
       });
   }
-
-  public getPostData(): void{
+/**
+ *This method will fire the call to server to find the result
+ *
+ * @memberof UtilityService
+ */
+public getPostData(): void{
     
     const planets = [];
     const vehicles = [];
@@ -70,8 +83,15 @@ export class UtilityService {
     this.router.navigate(['./success', {status: oResult.status,planet: oResult.planet_name, time:this.getTimeTaken()}]);
   });
   }
-
- public setSelectedPlanet(index, value){
+/**
+ *Logic to set the planet and remove it from the dropdown
+ *
+ * @param {*} index
+ * @param {*} value
+ * @returns
+ * @memberof UtilityService
+ */
+public setSelectedPlanet(index, value){
    if(value === -1)
     return;
    const i = this.getValueAtIndex(index);
@@ -87,7 +107,14 @@ export class UtilityService {
    this.selectedList.push(obj1);
    this.subPlanets.next(this.oPlanetsData);
  }
- 
+ /**
+  *returns the position of planet
+  *
+  * @private
+  * @param {*} index
+  * @returns
+  * @memberof UtilityService
+  */
  private getValueAtIndex(index)
  {
    for(let i =0; i< this.selectedList.length; i++){
@@ -97,8 +124,15 @@ export class UtilityService {
    return -1;
  }
 
-
- private getValueAtIndexForVehicle(index)
+/**
+ *returns the position of vehickle
+ *
+ * @private
+ * @param {*} index
+ * @returns
+ * @memberof UtilityService
+ */
+private getValueAtIndexForVehicle(index)
  {
    for(let i =0; i< this.selectedList.length; i++){
      if(this.selectedList[i].index === index && this.selectedList[i].vehicleValue !== undefined)
@@ -107,7 +141,15 @@ export class UtilityService {
    return -1;
  }
 
- public setVehicles(index, value){
+/**
+ *sets vehicle wrt corresponding planet and reduce its count or increment it based on user action
+ *
+ * @param {*} index
+ * @param {*} value
+ * @returns
+ * @memberof UtilityService
+ */
+public setVehicles(index, value){
  if(value === -1)
     return;
    const i = this.getValueAtIndexForVehicle(index);
@@ -121,8 +163,13 @@ export class UtilityService {
    })
    this.subVehicles.next(this.oVehicles);
   }
-
-  public getTimeTaken(){
+/**
+ *Calcuates the time taken at a given instance
+ *
+ * @returns
+ * @memberof UtilityService
+ */
+public getTimeTaken(){
     let time : number = 0;
     for(let i = 0; i < this.selectedList.length; i++)
     {

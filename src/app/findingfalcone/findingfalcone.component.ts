@@ -16,12 +16,20 @@ export class FindingfalconeComponent implements OnInit {
   private indexp = -1;
   
   constructor(private utService: UtilityService) { }
-
-  ngOnInit() {
+/**
+ *Validates input and sets defaults
+ *
+ * @memberof FindingfalconeComponent
+ */
+public ngOnInit(): void {
     this.setDefaults();
   }
-  
-  public fnDoSomething(){
+  /**
+   *Finds the index of the planet in the list and stores it in service utility
+   *
+   * @memberof FindingfalconeComponent
+   */
+  public fnSetSelectedPlanet(): void{
     let index = this.oPlanetList.findIndex(
       (item) => item.name === this.sPlanet
     );
@@ -30,11 +38,23 @@ export class FindingfalconeComponent implements OnInit {
 
   }
 
-  
+  /**
+   *Sets selected vehicles
+   *
+   * @param {*} index
+   * @memberof FindingfalconeComponent
+   */
   public fnVehicles(index): void{
     this.utService.setVehicles(this.sDummy,index);
   }
 
+  /**
+   *Disables the space vehicle which are not applicable for selected planet
+   *
+   * @param {*} vehicles
+   * @returns {boolean}
+   * @memberof FindingfalconeComponent
+   */
   public fnDisableInput(vehicles): boolean{
     if(vehicles.total_no === 0)
       return true;
@@ -44,8 +64,13 @@ export class FindingfalconeComponent implements OnInit {
       return true;
     return false;
   }
-
-  private setDefaults(): void{
+/**
+ *sets defaults
+ *
+ * @private
+ * @memberof FindingfalconeComponent
+ */
+private setDefaults(): void{
 
   }
   
