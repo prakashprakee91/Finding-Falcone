@@ -1,14 +1,14 @@
 <!-- HTML for Picking a planet -->
-<div class="app-ff-rootlayot">
+<section class="app-ff-rootlayot">
 
-        <div class="app-ff-planetinfo">Select Planet you want to select</div>
+        <p class="app-ff-planetinfo">Select Planet you want to select</p>
 
-        <div class="app-ff-planetsParent" *ngFor="let i of sDummyArray">
+        <section class="app-ff-planetsParent" *ngFor="let i of sDummyArray">
                 <app-findingfalcone class="app-ff-planets" [oPlanetList]="aPlanets" [oVehicleList]="aVehicles" [sDummy]="sDummyArray[i]"></app-findingfalcone>
-        </div>
+        </section>
 
-        <div class="app-ff-timetaken">Time : {{fnGetTimeTaken()}}</div>
+        <app-time-component class="app-ff-timetaken"></app-time-component>
 
         <button class="app-ff-button" (click)="getPostData()">Find Falcone</button>
 
-</div>
+</section>

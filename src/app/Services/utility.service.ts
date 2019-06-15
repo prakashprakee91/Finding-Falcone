@@ -39,13 +39,17 @@ public fetchServerData(): void {
         });
         this.subPlanets.next(this.oPlanetsData);
         console.log(this.oPlanetsData);
-      });
+      },
+      error => {console.log(error)}
+    );
     this.httpClient.get('https://findfalcone.herokuapp.com/vehicles').subscribe(
       result => {
         this.oVehicles = result;
         this.subVehicles.next(this.oVehicles);
         console.log(result);
-      });
+      },
+      error => {console.log(error)}
+    );
     const body = {};
     const headerOptions = {
       headers: new HttpHeaders({ 'Accept': 'application/json' })
@@ -54,7 +58,9 @@ public fetchServerData(): void {
       result => {
         this.token = result;
 
-      });
+      },
+      error => {console.log(error)}
+    );
   }
 /**
  *This method will fire the call to server to find the result
@@ -80,7 +86,12 @@ public getPostData(): void{
     this.httpClient.post('https://findfalcone.herokuapp.com/find',JSON.stringify(obj), headerOptions).subscribe(result=>
   {
     let oResult: any = result;
-    this.router.navigate(['./success', {status: oResult.status,planet: oResult.planet_name, time:this.getTimeTaken()}]);
+    this.router.navigate(['./success', {status: oResult.status,planet: oResult.planet_name, time:this.getTimeTaken()}])
+    .then(() => {
+    })
+    .catch((reason) => {
+      console.log(reason);
+    });
   });
   }
 /**

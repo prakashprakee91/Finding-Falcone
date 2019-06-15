@@ -1,0 +1,152 @@
+{
+    "Data": [
+        
+        {
+            "TestCaseTitle": " Negative case: When there is 1 vehicle in the list and the max distance of vehicle is less than planet",
+            "FakeData": {
+                "oVehicleList": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 2,
+                        "maxDistance": 200
+                    }
+                ],
+                "oSelectedPlanet": {
+                    "distance": 300
+                }
+            },
+            "InitialExpects": {
+                "nTotalVehicles": 1,
+                "oVehicleListContent": [
+                    "abc(2)"
+                ]
+            },
+            "UIActions": {
+                "bCanTriggerClick": false
+            },
+            "ActionExpects": {
+                "nTotalVehicles": 1,
+                "oVehicleListContent": [
+                    "abc(2)"
+                ]
+            }
+        },
+        {
+            "TestCaseTitle": "Negative case: When oSelectedPlanet input to the component is undefined",
+            "FakeData": {
+                "oVehicleList": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 2,
+                        "maxDistance": 200
+                    }
+                ]
+            },
+            "InitialExpects": {
+                "nTotalVehicles": 1,
+                "oVehicleListContent": [
+                    "abc(2)"
+                ]
+            },
+            "UIActions": {
+                "bCanTriggerClick": true
+            },
+            "ActionExpects": {
+                "nTotalVehicles": 1,
+                "oVehicleListContent": [
+                    "abc(2)"
+                ]
+            }
+        },
+        {
+            "TestCaseTitle": "Negative case: When there are no vehicles available to choose in the list",
+            "FakeData": {
+                "oVehicleList": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 0,
+                        "maxDistance": 200
+                    }
+                ],
+                "oSelectedPlanet": {
+                    "distance": 300
+                }
+            },
+            "InitialExpects": {
+                "nTotalVehicles":1,
+                "oVehicleListContent": [
+                    "abc(0)"
+                ]
+            },
+            "UIActions": {
+                "bCanTriggerClick": false
+            },
+            "ActionExpects": {
+                "nTotalVehicles": 1,
+                "oVehicleListContent": [
+                    "abc(2)"
+                ]
+            }
+        },
+        {
+            "TestCaseTitle": "Positive case: When there is 1 vehicle in the list and click event triggers",
+            "FakeData": {
+                "oVehicleList": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 2,
+                        "maxDistance": 200
+                    }
+                ],
+                "oSelectedPlanet": {
+                    "distance": 300
+                }
+            },
+            "InitialExpects": {
+                "nTotalVehicles": 1,
+                "oVehicleListContent": [
+                    "abc(2)"
+                ]
+            },
+            "UIActions": {
+                "bCanTriggerClick": true
+            },
+            "ActionExpects": {
+                "nTotalVehicles": 1,
+                "oVehicleListContent": [
+                    "abc(2)"
+                ]
+            }
+        },
+        {
+            "TestCaseTitle": "Positive case: When max-distance of vehicle is more than planet distance",
+            "FakeData": {
+                "oVehicleList": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 2,
+                        "maxDistance": 600
+                    }
+                ],
+                "oSelectedPlanet": {
+                    "distance": 300
+                }
+            },
+            "InitialExpects": {
+                "nTotalVehicles": 1,
+                "oVehicleListContent": [
+                    "abc(2)"
+                ]
+            },
+            "UIActions": {
+                "bCanTriggerClick": false
+            },
+            "ActionExpects": {
+                "nTotalVehicles": 1,
+                "oVehicleListContent": [
+                    "abc(2)"
+                ]
+            }
+        }
+    ]
+}

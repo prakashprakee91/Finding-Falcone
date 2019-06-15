@@ -1,0 +1,35 @@
+{
+    "Data": [
+
+        {
+            "TestCaseTitle": "When falcone is not found",
+            "FakeData": {
+                "status": "fail",
+                "planet": "Sapir",
+                "time": "250"
+            },
+            "InitialExpects": {
+                "sText": "Oops!!! You failed to find falcone. Better luck",
+                "sPlanetName": "Sapir",
+                "timeTaken": "250",
+                "nChildren": 2
+            }
+        },
+        
+        {
+            "TestCaseTitle": "When falcone is found",
+            "FakeData": {
+                "status": "success",
+                "planet": "Sapir",
+                "time": "250"
+            },
+            "InitialExpects": {
+                "sText": "Sucess!!! You have found falcone. The King will be pleased with you",
+                "sPlanetName": "Sapir",
+                "timeTaken": "250",
+                "nChildren": 3
+            }
+        }
+
+    ]
+}

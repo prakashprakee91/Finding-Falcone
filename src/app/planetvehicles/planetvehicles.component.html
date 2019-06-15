@@ -1,0 +1,5 @@
+<!-- Space vehicles to pick from -->
+  <section class="vehiclesListCls" *ngFor="let vehicles of oVehicleList; let i = index">
+    <input type="radio" [name]="sDummy" [value]="vehicles.name" [disabled]="fnDisableInput(vehicles)"
+    (click)="fnVehicles(i)">{{vehicles.name}}({{vehicles.total_no}})
+  </section>

@@ -3,8 +3,8 @@
     display: flex;
     flex-direction: column;
 }
-.inputCls{
-    width:  $factor*200/16;
+
+.vehiclesListCls{
+    text-align: left;
+    margin-top: $factor*30/16;
 }
-
-

@@ -1,0 +1,57 @@
+{
+    "Data": [
+        
+        {
+            "TestCaseTitle": "Positive case: When there is 1 vehicle in the list and click event triggers",
+            "FakeData": {
+                "oVehicleList": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 2,
+                        "maxDistance": 200
+                    },
+                    {
+                        "name": "ggg",
+                        "totalNumber": 1,
+                        "maxDistance": 500
+                    },
+                    {
+                        "name": "xxx",
+                        "totalNumber": 2,
+                        "maxDistance": 450
+                    }
+                ],
+                "oPlanetList": [{
+                    "name": "Dorbong",
+                    "distance": 300
+                },
+                {
+                    "name": "Lemur",
+                    "distance": 500
+                },
+                {
+                    "name": "abc",
+                    "distance": 250
+                },
+                {
+                    "name": "xyz",
+                    "distance": 420
+                }
+            ]
+            },
+            "InitialExpects": {
+                "sInput": "",
+                "nElements": 2
+            },
+            "UIActions": {
+                "bNgModelChangeTrigger": true,
+                "inputValue": "sapir"
+            },
+            "ActionExpects": {
+                "sInput": "sapir",
+                "nElements": 3
+            }
+        }
+        
+    ]
+}

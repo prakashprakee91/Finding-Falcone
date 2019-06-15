@@ -34,9 +34,7 @@ public ngOnInit(): void {
     {
       this.sText = 'Oops!!! You failed to find falcone. Better luck';
     }
-    //this.sText = this.router.snapshot.paramMap.get('status');
     this.nTime = this.router.snapshot.paramMap.get('time');
-    console.log(this.router.snapshot.paramMap.get('status'));
   }
 
 }

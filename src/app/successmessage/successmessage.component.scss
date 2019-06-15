@@ -1,0 +1,27 @@
+@import "src/styles.scss";
+
+
+%colorAndFont{
+    color: #DC3D24;
+    font-size: $factor;
+}
+.testClass{
+    font-size: $factor*36/16;
+    font-weight: bolder;
+    color: darkgreen;
+    margin: $factor*20/16 auto;
+}
+
+.planetClass{
+    @extend %colorAndFont;
+}
+
+.timeClass{
+    @extend %colorAndFont;
+}
+
+@media screen and (max-width: 600px) {
+    .testClass {
+        font-size: $factor*12/16;
+    }
+  }

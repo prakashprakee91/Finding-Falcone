@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { UtilityService } from 'src/app/Services/utility.service';
+import { Subscription } from 'rxjs';
 /**
  *This class holds the logic and methods for this component
  *
@@ -13,55 +14,71 @@ import { UtilityService } from 'src/app/Services/utility.service';
   templateUrl: './rootcomponent.component.html',
   styleUrls: ['./rootcomponent.component.scss']
 })
-export class RootcomponentComponent implements OnInit {
+export class RootcomponentComponent implements OnInit, OnDestroy {
 
   nSelect = 4;
-  public aPlanets: any;
-  public aVehicles: any;
-  public sDummyArray = [0,1,2,3];
+  public aPlanets = [];
+  public aVehicles = [];
+  public sDummyArray = [0, 1, 2, 3];
 
-  constructor(private utService: UtilityService){}
+  private oPlanetSubcription: Subscription = null;
+  private oVehicleSubcription: Subscription = null;
+
+  constructor(private utService: UtilityService) { }
   /**
    *Fetching data and subscription are handled in this lifecycle
    *
    * @memberof RootcomponentComponent
    */
-  public ngOnInit(): void{
+  public ngOnInit(): void {
     this.fetchData();
-    this.utService.obsPlanet$.subscribe( oPlanets =>{
-      this.aPlanets = oPlanets;
-    });
 
-    this.utService.obsVehicles$.subscribe( vehicles =>{
-      this.aVehicles = vehicles;
-    });
+    if (!!this.utService.obsPlanet$) {
+      this.oPlanetSubcription = this.utService.obsPlanet$.subscribe(oPlanets => {
+        this.aPlanets = oPlanets;
+      },
+        error => { console.log(error) }
+      );
+    }
+
+    if (!!this.utService.obsVehicles$) {
+      this.oVehicleSubcription = this.utService.obsVehicles$.subscribe(vehicles => {
+        this.aVehicles = vehicles;
+      },
+        error => { console.log(error) }
+      );
+    }
+  }
+
+  public ngOnDestroy(): void {
+    if (!!this.oPlanetSubcription)
+      this.oPlanetSubcription.unsubscribe();
+    if (!!this.oVehicleSubcription)
+      this.oVehicleSubcription.unsubscribe();
   }
   /**
    *Fetches data from server
    *
    * @memberof RootcomponentComponent
    */
-  public fetchData(){
+  public fetchData() {
     this.utService.fetchServerData();
   }
-/**
- *Gets total time taken
- *
- * @returns
- * @memberof RootcomponentComponent
- */
-public fnGetTimeTaken(){
-   return this.utService.getTimeTaken();
-  }
+
 
   /**
    *Gets data
    *
    * @memberof RootcomponentComponent
    */
-  public getPostData(): void{
-    this.utService.getPostData();
+  public getPostData(): void {
+    console.log(this.add1(10)(20));
+    //this.utService.getPostData();
   }
-     
+
+  private add1(a) {
+    console.log();
+  }
+
 
 }

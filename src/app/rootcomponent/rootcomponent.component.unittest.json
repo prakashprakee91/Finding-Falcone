@@ -1,0 +1,886 @@
+{
+    "Data": [
+        {
+            "TestCaseTitle": "Negative case: vehicle subscription is not available",
+            "FakeData": {
+                "bNoVehicleSub": true,
+                "oVehicleList": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 2,
+                        "maxDistance": 200
+                    },
+                    {
+                        "name": "ggg",
+                        "totalNumber": 1,
+                        "maxDistance": 500
+                    },
+                    {
+                        "name": "xxx",
+                        "totalNumber": 2,
+                        "maxDistance": 450
+                    }
+                ],
+                "oPlanetList": [{
+                    "name": "Dorbong",
+                    "distance": 300
+                },
+                {
+                    "name": "Lemur",
+                    "distance": 500
+                },
+                {
+                    "name": "abc",
+                    "distance": 250
+                },
+                {
+                    "name": "xyz",
+                    "distance": 420
+                }
+            ]
+            },
+            "InitialExpects": {
+                "aPlanet": [{
+                    "name": "Dorbong",
+                    "distance": 300
+                },
+                {
+                    "name": "Lemur",
+                    "distance": 500
+                },
+                {
+                    "name": "abc",
+                    "distance": 250
+                },
+                {
+                    "name": "xyz",
+                    "distance": 420
+                }
+            ],
+                "aVehicles": [
+                    
+                ]
+            },
+            "UIActions": {
+                "bFindingFalconeButtonClick": false
+            },
+            "ActionExpects": {
+                "aPlanet": [{
+                    "name": "Dorbong",
+                    "distance": 300
+                },
+                {
+                    "name": "Lemur",
+                    "distance": 500
+                },
+                {
+                    "name": "abc",
+                    "distance": 250
+                },
+                {
+                    "name": "xyz",
+                    "distance": 420
+                }
+            ],
+                "aVehicles": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 2,
+                        "maxDistance": 200
+                    },
+                    {
+                        "name": "ggg",
+                        "totalNumber": 1,
+                        "maxDistance": 500
+                    },
+                    {
+                        "name": "xxx",
+                        "totalNumber": 2,
+                        "maxDistance": 450
+                    }
+                ]
+            },
+            "Observable": {
+                "bTriggerPlanetObs": false,
+                "bTriggerVehicleObs": true,
+                "isPlanetObsError": false,
+                "isVehicleObsError": false
+            },
+            "ObsExpects":{
+                "aPlanet": [{
+                    "name": "Dorbong",
+                    "distance": 300
+                },
+                {
+                    "name": "Lemur",
+                    "distance": 500
+                },
+                {
+                    "name": "abc",
+                    "distance": 250
+                },
+                {
+                    "name": "xyz",
+                    "distance": 420
+                }
+            ],
+                "aVehicles": [
+                    
+                ]
+            }
+        },
+        {
+            "TestCaseTitle": "Negative case: planet subscription is not available, So even if Obs triggers next it will not have data",
+            "FakeData": {
+                "bNoPlanetSub": true,
+                "oVehicleList": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 2,
+                        "maxDistance": 200
+                    },
+                    {
+                        "name": "ggg",
+                        "totalNumber": 1,
+                        "maxDistance": 500
+                    },
+                    {
+                        "name": "xxx",
+                        "totalNumber": 2,
+                        "maxDistance": 450
+                    }
+                ],
+                "oPlanetList": [{
+                    "name": "Dorbong",
+                    "distance": 300
+                },
+                {
+                    "name": "Lemur",
+                    "distance": 500
+                },
+                {
+                    "name": "abc",
+                    "distance": 250
+                },
+                {
+                    "name": "xyz",
+                    "distance": 420
+                }
+            ]
+            },
+            "InitialExpects": {
+                "aPlanet": [
+            ],
+                "aVehicles": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 2,
+                        "maxDistance": 200
+                    },
+                    {
+                        "name": "ggg",
+                        "totalNumber": 1,
+                        "maxDistance": 500
+                    },
+                    {
+                        "name": "xxx",
+                        "totalNumber": 2,
+                        "maxDistance": 450
+                    }
+                ]
+            },
+            "UIActions": {
+                "bFindingFalconeButtonClick": false
+            },
+            "ActionExpects": {
+                "aPlanet": [{
+                    "name": "Dorbong",
+                    "distance": 300
+                },
+                {
+                    "name": "Lemur",
+                    "distance": 500
+                },
+                {
+                    "name": "abc",
+                    "distance": 250
+                },
+                {
+                    "name": "xyz",
+                    "distance": 420
+                }
+            ],
+                "aVehicles": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 2,
+                        "maxDistance": 200
+                    },
+                    {
+                        "name": "ggg",
+                        "totalNumber": 1,
+                        "maxDistance": 500
+                    },
+                    {
+                        "name": "xxx",
+                        "totalNumber": 2,
+                        "maxDistance": 450
+                    }
+                ]
+            },
+            "Observable": {
+                "bTriggerPlanetObs": true,
+                "bTriggerVehicleObs": false,
+                "isPlanetObsError": false,
+                "isVehicleObsError": false
+            },
+            "ObsExpects":{
+                "aPlanet": [
+            ],
+                "aVehicles": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 2,
+                        "maxDistance": 200
+                    },
+                    {
+                        "name": "ggg",
+                        "totalNumber": 1,
+                        "maxDistance": 500
+                    },
+                    {
+                        "name": "xxx",
+                        "totalNumber": 2,
+                        "maxDistance": 450
+                    }
+                ]
+            }
+        },
+        {
+            "TestCaseTitle": "Positive case: Simple case",
+            "FakeData": {
+                "oVehicleList": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 2,
+                        "maxDistance": 200
+                    },
+                    {
+                        "name": "ggg",
+                        "totalNumber": 1,
+                        "maxDistance": 500
+                    },
+                    {
+                        "name": "xxx",
+                        "totalNumber": 2,
+                        "maxDistance": 450
+                    }
+                ],
+                "oPlanetList": [{
+                    "name": "Dorbong",
+                    "distance": 300
+                },
+                {
+                    "name": "Lemur",
+                    "distance": 500
+                },
+                {
+                    "name": "abc",
+                    "distance": 250
+                },
+                {
+                    "name": "xyz",
+                    "distance": 420
+                }
+            ]
+            },
+            "InitialExpects": {
+                "aPlanet": [{
+                    "name": "Dorbong",
+                    "distance": 300
+                },
+                {
+                    "name": "Lemur",
+                    "distance": 500
+                },
+                {
+                    "name": "abc",
+                    "distance": 250
+                },
+                {
+                    "name": "xyz",
+                    "distance": 420
+                }
+            ],
+                "aVehicles": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 2,
+                        "maxDistance": 200
+                    },
+                    {
+                        "name": "ggg",
+                        "totalNumber": 1,
+                        "maxDistance": 500
+                    },
+                    {
+                        "name": "xxx",
+                        "totalNumber": 2,
+                        "maxDistance": 450
+                    }
+                ]
+            },
+            "UIActions": {
+                "bFindingFalconeButtonClick": false
+            },
+            "ActionExpects": {
+                "aPlanet": [{
+                    "name": "Dorbong",
+                    "distance": 300
+                },
+                {
+                    "name": "Lemur",
+                    "distance": 500
+                },
+                {
+                    "name": "abc",
+                    "distance": 250
+                },
+                {
+                    "name": "xyz",
+                    "distance": 420
+                }
+            ],
+                "aVehicles": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 2,
+                        "maxDistance": 200
+                    },
+                    {
+                        "name": "ggg",
+                        "totalNumber": 1,
+                        "maxDistance": 500
+                    },
+                    {
+                        "name": "xxx",
+                        "totalNumber": 2,
+                        "maxDistance": 450
+                    }
+                ]
+            },
+            "Observable": {
+                "bTriggerPlanetObs": false,
+                "bTriggerVehicleObs": false,
+                "isPlanetObsError": false,
+                "isVehicleObsError": false
+            },
+            "ObsExpects":{
+                "aPlanet": [{
+                    "name": "Dorbong",
+                    "distance": 300
+                },
+                {
+                    "name": "Lemur",
+                    "distance": 500
+                },
+                {
+                    "name": "abc",
+                    "distance": 250
+                },
+                {
+                    "name": "xyz",
+                    "distance": 420
+                }
+            ],
+                "aVehicles": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 2,
+                        "maxDistance": 200
+                    },
+                    {
+                        "name": "ggg",
+                        "totalNumber": 1,
+                        "maxDistance": 500
+                    },
+                    {
+                        "name": "xxx",
+                        "totalNumber": 2,
+                        "maxDistance": 450
+                    }
+                ]
+            }
+        },
+
+        {
+            "TestCaseTitle": "Positive case: Simple case but planet subscription error is caught",
+            "FakeData": {
+                "oVehicleList": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 2,
+                        "maxDistance": 200
+                    },
+                    {
+                        "name": "ggg",
+                        "totalNumber": 1,
+                        "maxDistance": 500
+                    },
+                    {
+                        "name": "xxx",
+                        "totalNumber": 2,
+                        "maxDistance": 450
+                    }
+                ],
+                "oPlanetList": [{
+                    "name": "Dorbong",
+                    "distance": 300
+                },
+                {
+                    "name": "Lemur",
+                    "distance": 500
+                },
+                {
+                    "name": "abc",
+                    "distance": 250
+                },
+                {
+                    "name": "xyz",
+                    "distance": 420
+                }
+            ]
+            },
+            "InitialExpects": {
+                "aPlanet": [{
+                    "name": "Dorbong",
+                    "distance": 300
+                },
+                {
+                    "name": "Lemur",
+                    "distance": 500
+                },
+                {
+                    "name": "abc",
+                    "distance": 250
+                },
+                {
+                    "name": "xyz",
+                    "distance": 420
+                }
+            ],
+                "aVehicles": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 2,
+                        "maxDistance": 200
+                    },
+                    {
+                        "name": "ggg",
+                        "totalNumber": 1,
+                        "maxDistance": 500
+                    },
+                    {
+                        "name": "xxx",
+                        "totalNumber": 2,
+                        "maxDistance": 450
+                    }
+                ]
+            },
+            "UIActions": {
+                "bFindingFalconeButtonClick": false
+            },
+            "ActionExpects": {
+                "aPlanet": [{
+                    "name": "Dorbong",
+                    "distance": 300
+                },
+                {
+                    "name": "Lemur",
+                    "distance": 500
+                },
+                {
+                    "name": "abc",
+                    "distance": 250
+                },
+                {
+                    "name": "xyz",
+                    "distance": 420
+                }
+            ],
+                "aVehicles": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 2,
+                        "maxDistance": 200
+                    },
+                    {
+                        "name": "ggg",
+                        "totalNumber": 1,
+                        "maxDistance": 500
+                    },
+                    {
+                        "name": "xxx",
+                        "totalNumber": 2,
+                        "maxDistance": 450
+                    }
+                ]
+            },
+            "Observable": {
+                "bTriggerPlanetObs": true,
+                "bTriggerVehicleObs": false,
+                "isPlanetObsError": true,
+                "isVehicleObsError": false
+            },
+            "ObsExpects":{
+                "aPlanet": [{
+                    "name": "Dorbong",
+                    "distance": 300
+                },
+                {
+                    "name": "Lemur",
+                    "distance": 500
+                },
+                {
+                    "name": "abc",
+                    "distance": 250
+                },
+                {
+                    "name": "xyz",
+                    "distance": 420
+                }
+            ],
+                "aVehicles": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 2,
+                        "maxDistance": 200
+                    },
+                    {
+                        "name": "ggg",
+                        "totalNumber": 1,
+                        "maxDistance": 500
+                    },
+                    {
+                        "name": "xxx",
+                        "totalNumber": 2,
+                        "maxDistance": 450
+                    }
+                ]
+            }
+        },
+        {
+            "TestCaseTitle": "Positive case: Simple case but vehicle subscription error is caught",
+            "FakeData": {
+                "oVehicleList": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 2,
+                        "maxDistance": 200
+                    },
+                    {
+                        "name": "ggg",
+                        "totalNumber": 1,
+                        "maxDistance": 500
+                    },
+                    {
+                        "name": "xxx",
+                        "totalNumber": 2,
+                        "maxDistance": 450
+                    }
+                ],
+                "oPlanetList": [{
+                    "name": "Dorbong",
+                    "distance": 300
+                },
+                {
+                    "name": "Lemur",
+                    "distance": 500
+                },
+                {
+                    "name": "abc",
+                    "distance": 250
+                },
+                {
+                    "name": "xyz",
+                    "distance": 420
+                }
+            ]
+            },
+            "InitialExpects": {
+                "aPlanet": [{
+                    "name": "Dorbong",
+                    "distance": 300
+                },
+                {
+                    "name": "Lemur",
+                    "distance": 500
+                },
+                {
+                    "name": "abc",
+                    "distance": 250
+                },
+                {
+                    "name": "xyz",
+                    "distance": 420
+                }
+            ],
+                "aVehicles": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 2,
+                        "maxDistance": 200
+                    },
+                    {
+                        "name": "ggg",
+                        "totalNumber": 1,
+                        "maxDistance": 500
+                    },
+                    {
+                        "name": "xxx",
+                        "totalNumber": 2,
+                        "maxDistance": 450
+                    }
+                ]
+            },
+            "UIActions": {
+                "bFindingFalconeButtonClick": false
+            },
+            "ActionExpects": {
+                "aPlanet": [{
+                    "name": "Dorbong",
+                    "distance": 300
+                },
+                {
+                    "name": "Lemur",
+                    "distance": 500
+                },
+                {
+                    "name": "abc",
+                    "distance": 250
+                },
+                {
+                    "name": "xyz",
+                    "distance": 420
+                }
+            ],
+                "aVehicles": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 2,
+                        "maxDistance": 200
+                    },
+                    {
+                        "name": "ggg",
+                        "totalNumber": 1,
+                        "maxDistance": 500
+                    },
+                    {
+                        "name": "xxx",
+                        "totalNumber": 2,
+                        "maxDistance": 450
+                    }
+                ]
+            },
+            "Observable": {
+                "bTriggerPlanetObs": false,
+                "bTriggerVehicleObs": true,
+                "isPlanetObsError": false,
+                "isVehicleObsError": true
+            },
+            "ObsExpects":{
+                "aPlanet": [{
+                    "name": "Dorbong",
+                    "distance": 300
+                },
+                {
+                    "name": "Lemur",
+                    "distance": 500
+                },
+                {
+                    "name": "abc",
+                    "distance": 250
+                },
+                {
+                    "name": "xyz",
+                    "distance": 420
+                }
+            ],
+                "aVehicles": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 2,
+                        "maxDistance": 200
+                    },
+                    {
+                        "name": "ggg",
+                        "totalNumber": 1,
+                        "maxDistance": 500
+                    },
+                    {
+                        "name": "xxx",
+                        "totalNumber": 2,
+                        "maxDistance": 450
+                    }
+                ]
+            }
+        },
+        {
+            "TestCaseTitle": "Positive case: Button is clicked",
+            "FakeData": {
+                "oVehicleList": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 2,
+                        "maxDistance": 200
+                    },
+                    {
+                        "name": "ggg",
+                        "totalNumber": 1,
+                        "maxDistance": 500
+                    },
+                    {
+                        "name": "xxx",
+                        "totalNumber": 2,
+                        "maxDistance": 450
+                    }
+                ],
+                "oPlanetList": [{
+                    "name": "Dorbong",
+                    "distance": 300
+                },
+                {
+                    "name": "Lemur",
+                    "distance": 500
+                },
+                {
+                    "name": "abc",
+                    "distance": 250
+                },
+                {
+                    "name": "xyz",
+                    "distance": 420
+                }
+            ]
+            },
+            "InitialExpects": {
+                "aPlanet": [{
+                    "name": "Dorbong",
+                    "distance": 300
+                },
+                {
+                    "name": "Lemur",
+                    "distance": 500
+                },
+                {
+                    "name": "abc",
+                    "distance": 250
+                },
+                {
+                    "name": "xyz",
+                    "distance": 420
+                }
+            ],
+                "aVehicles": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 2,
+                        "maxDistance": 200
+                    },
+                    {
+                        "name": "ggg",
+                        "totalNumber": 1,
+                        "maxDistance": 500
+                    },
+                    {
+                        "name": "xxx",
+                        "totalNumber": 2,
+                        "maxDistance": 450
+                    }
+                ]
+            },
+            "UIActions": {
+                "bFindingFalconeButtonClick": true
+            },
+            "ActionExpects": {
+                "aPlanet": [{
+                    "name": "Dorbong",
+                    "distance": 300
+                },
+                {
+                    "name": "Lemur",
+                    "distance": 500
+                },
+                {
+                    "name": "abc",
+                    "distance": 250
+                },
+                {
+                    "name": "xyz",
+                    "distance": 420
+                }
+            ],
+                "aVehicles": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 2,
+                        "maxDistance": 200
+                    },
+                    {
+                        "name": "ggg",
+                        "totalNumber": 1,
+                        "maxDistance": 500
+                    },
+                    {
+                        "name": "xxx",
+                        "totalNumber": 2,
+                        "maxDistance": 450
+                    }
+                ]
+            },
+            "Observable": {
+                "bTriggerPlanetObs": false,
+                "bTriggerVehicleObs": false,
+                "isPlanetObsError": false,
+                "isVehicleObsError": false
+            },
+            "ObsExpects":{
+                "aPlanet": [{
+                    "name": "Dorbong",
+                    "distance": 300
+                },
+                {
+                    "name": "Lemur",
+                    "distance": 500
+                },
+                {
+                    "name": "abc",
+                    "distance": 250
+                },
+                {
+                    "name": "xyz",
+                    "distance": 420
+                }
+            ],
+                "aVehicles": [
+                    {
+                        "name": "abc",
+                        "totalNumber": 2,
+                        "maxDistance": 200
+                    },
+                    {
+                        "name": "ggg",
+                        "totalNumber": 1,
+                        "maxDistance": 500
+                    },
+                    {
+                        "name": "xxx",
+                        "totalNumber": 2,
+                        "maxDistance": 450
+                    }
+                ]
+            }
+        }
+        
+    ]
+}

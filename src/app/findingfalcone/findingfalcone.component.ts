@@ -12,8 +12,9 @@ export class FindingfalconeComponent implements OnInit {
   @Input() public oPlanetList;
   @Input() public oVehicleList;
   @Input() public sDummy;
-  public sPlanet: any = '';
-  private indexp = -1;
+  public sPlanet;
+  public oSelectedPlanet;
+  private indexp;
   
   constructor(private utService: UtilityService) { }
 /**
@@ -35,35 +36,10 @@ public ngOnInit(): void {
     );
     this.indexp = index;
     this.utService.setSelectedPlanet(this.sDummy,index);
-
+    this.oSelectedPlanet = this.oPlanetList[this.indexp];
   }
 
-  /**
-   *Sets selected vehicles
-   *
-   * @param {*} index
-   * @memberof FindingfalconeComponent
-   */
-  public fnVehicles(index): void{
-    this.utService.setVehicles(this.sDummy,index);
-  }
 
-  /**
-   *Disables the space vehicle which are not applicable for selected planet
-   *
-   * @param {*} vehicles
-   * @returns {boolean}
-   * @memberof FindingfalconeComponent
-   */
-  public fnDisableInput(vehicles): boolean{
-    if(vehicles.total_no === 0)
-      return true;
-    if(this.indexp === -1)
-      return false;
-    if(vehicles.max_distance < this.oPlanetList[this.indexp].distance)
-      return true;
-    return false;
-  }
 /**
  *sets defaults
  *
@@ -71,7 +47,9 @@ public ngOnInit(): void {
  * @memberof FindingfalconeComponent
  */
 private setDefaults(): void{
-
+    this.sPlanet = ''
+    this.oSelectedPlanet = null;
+    this.indexp = -1;
   }
   
 }

@@ -9,6 +9,8 @@ import { FindingfalconeComponent } from './findingfalcone/findingfalcone.compone
 import { SuccessmessageComponent } from './successmessage/successmessage.component';
 import { RootcomponentComponent } from './rootcomponent/rootcomponent.component';
 import { ContentHolderComponent } from './content-holder/content-holder.component';
+import { TimeComponentComponent } from './time-component/time-component.component';
+import { PlanetvehiclesComponent } from './planetvehicles/planetvehicles.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { ContentHolderComponent } from './content-holder/content-holder.componen
     FindingfalconeComponent,
     SuccessmessageComponent,
     RootcomponentComponent,
-    ContentHolderComponent
+    ContentHolderComponent,
+    TimeComponentComponent,
+    PlanetvehiclesComponent
   ],
   imports: [
     BrowserModule,

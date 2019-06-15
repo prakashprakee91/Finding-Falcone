@@ -1,16 +1,14 @@
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { PlanetvehiclesComponent } from './planetvehicles.component';
 import { environment } from 'src/environments/environment';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { By } from '@angular/platform-browser';
-import { Component, NO_ERRORS_SCHEMA, Injector } from '@angular/core';
-import { FindingfalconeComponent } from 'src/app/findingfalcone/findingfalcone.component';
-import { FormsModule, NgModel } from '@angular/forms';
+import { Component } from '@angular/core';
+type IResultRec = { title: string, nodes: Array<{ title: string, node: any }>, component: PlanetvehiclesComponent }
 
-type IResultRec = { title: string, nodes: Array<{ title: string, node: any }>, component: FindingfalconeComponent }
-
-const testJson: any = require('./findingfalcone.component.json');
+const testJson: any = require('./planetVehicles.component.unittest.json');
 const testData: any = testJson.Data;
 
 const uiResultNodes: Array<IResultRec> = new Array<IResultRec>(testData.length);
@@ -34,40 +32,43 @@ function fnCreateFakeVehicleList(oVehicleList) {
   return oFakeVehicleList;
 }
 
-function fnTestExpects(oCompiledElement, component, testObject) {
-  let vehicleElements = oCompiledElement.getElementsByClassName('inputCls');
-  expect(component.sPlanet).toBe(testObject.sInput);
-  
-  let domElements = oCompiledElement.children;
-  expect(domElements.length).toBe(testObject.nElements);
+function fnTestExpects(oCompiledElement, testObject) {
+  let vehicleElements = oCompiledElement.getElementsByClassName('vehiclesListCls');
+  console.log(vehicleElements);
+  expect(vehicleElements.length).toBe(testObject.nTotalVehicles);
+  for (let vIndex: number = 0; vIndex < vehicleElements.length; vIndex++) {
+    const textContent = (vehicleElements[vIndex] as HTMLElement).innerText;
+    const expTextContent = testObject.oVehicleListContent[vIndex];
+    expect(textContent).toBe(expTextContent);
+  }
 }
 
 function fnDoTest(): void {
   for (let i: number = 0; i < testData.length; i++) {
     describe((i + 1 + '. ' + uiResultNodes[i].title), () => {
 
-      let component: FindingfalconeComponent;
-      let fixture: ComponentFixture<FindingfalconeComponent>;
+      let component: PlanetvehiclesComponent;
+      let fixture: ComponentFixture<PlanetvehiclesComponent>;
 
       beforeEach(async(() => {
         TestBed.configureTestingModule({
-          imports: [RouterTestingModule, HttpClientModule, FormsModule],
-          declarations: [FindingfalconeComponent],
-          providers: [],
-          schemas: [NO_ERRORS_SCHEMA]
+          imports: [RouterTestingModule, HttpClientModule],
+          declarations: [PlanetvehiclesComponent],
+          providers: []
         })
           .compileComponents();
       }));
 
       beforeEach(() => {
-        fixture = TestBed.createComponent(FindingfalconeComponent);
+        fixture = TestBed.createComponent(PlanetvehiclesComponent);
         component = fixture.componentInstance;
         uiResultNodes[i].component = component;
 
         component.oVehicleList = fnCreateFakeVehicleList(testData[i].FakeData.oVehicleList);
-        component.oPlanetList = testData[i].FakeData.oPlanetList;
+        component.oSelectedPlanet = testData[i].FakeData.oSelectedPlanet;
         component.sDummy = [];
 
+        spyOn((component as any).utService, 'setVehicles').and.callFake(() => { });
 
         fixture.detectChanges();
       });
@@ -88,17 +89,21 @@ function fnDoTest(): void {
         }
 
         //Initial expects
-        fnTestExpects(compiledElement,component, testData[i].InitialExpects);
+        fnTestExpects(compiledElement, testData[i].InitialExpects);
 
-        //Simulating ngModelChange
-        let vehicleElement = compiledElement.getElementsByClassName('inputCls')[0] as HTMLInputElement;
-        vehicleElement.value = testData[i].UIActions.inputValue;
-        vehicleElement.dispatchEvent(new Event('input'));
-        fixture.detectChanges();
-        fixture.whenStable().then(()=>{
-          fnTestExpects(compiledElement, component, testData[i].ActionExpects);
-          console.log(component.sPlanet);
-        });
+
+
+        //On click event
+        if (testData[i].UIActions.bCanTriggerClick === true) {
+          let clickElement = compiledElement.getElementsByClassName('vehiclesListCls')[0].children[0] as HTMLElement;
+          clickElement.click();
+          fixture.detectChanges();
+          fixture.whenStable().then(() => {
+            fnTestExpects(compiledElement, testData[i].ActionExpects);
+            expect(component.fnVehicles).toHaveBeenCalled();
+          });
+        }
+
         done();
       });
 

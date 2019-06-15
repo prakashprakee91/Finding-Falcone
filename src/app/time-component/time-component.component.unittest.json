@@ -1,0 +1,15 @@
+{
+    "Data": [
+        
+        {
+            "TestCaseTitle": "Time which is returned from the service should be binded in html",
+            "FakeData": {
+                "sTime": 250
+            },
+            "InitialExpects": {
+                "sTime": "250"
+            }
+        }
+        
+    ]
+}

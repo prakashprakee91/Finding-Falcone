@@ -9,10 +9,6 @@ list="datalist" [(ngModel)]="sPlanet" (ngModelChange)="fnSetSelectedPlanet()">
   </ng-container>
 </datalist>
 
-<!-- Space vehicles to pick from -->
-<div class="vehiclesListCls" *ngIf="sPlanet !== ''">
-  <div *ngFor="let vehicles of oVehicleList; let i = index">
-    <input type="radio" [name]="sDummy" [value]="vehicles.name" [disabled]="fnDisableInput(vehicles)"
-    (click)="fnVehicles(i)">{{vehicles.name}}({{vehicles.total_no}})
-  </div>
-</div>
+<!-- Vehicle Component -->
+<app-planetvehicles *ngIf="sPlanet !== ''" [oVehicleList] = "oVehicleList" [oSelectedPlanet] ="oSelectedPlanet"
+[sDummy] = "sDummy"></app-planetvehicles>

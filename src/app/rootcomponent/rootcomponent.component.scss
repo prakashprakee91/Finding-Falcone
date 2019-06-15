@@ -13,9 +13,6 @@
     text-align: center;
 }
 
-// .app-ff-header{
-//     grid-area: headerText;
-// }
 
 .app-ff-planetinfo{
     grid-area: info;
@@ -41,8 +38,26 @@
     height: $factor*60/16;
     border: $factor*4/16 solid turquoise;
     background: turquoise;
+    cursor: pointer;
 }
 
-// .app-ff-footer{
-//     grid-area: footer;
-// }
+@media screen and (max-width: 600px) {
+    .app-ff-rootlayot{
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-areas: 
+        'info '
+        'planet'
+        'planet'
+        'planet'
+        'planet'
+        'time'
+        'Button';
+        grid-row-gap: $factor*10/16;
+        text-align: center;
+    }
+    .app-ff-planetsParent, .app-ff-timetaken, .app-ff-button{
+        margin: auto;
+    }
+  }
